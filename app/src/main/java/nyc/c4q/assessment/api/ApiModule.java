@@ -1,4 +1,4 @@
-package nyc.c4q.assessment;
+package nyc.c4q.assessment.api;
 
 import javax.inject.Singleton;
 
