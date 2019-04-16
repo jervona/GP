@@ -55,7 +55,6 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
         @BindView(R.id.image)
         ImageView use_avatar;
 
-
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
