@@ -3,6 +3,7 @@ package nyc.c4q.assessment.list_of_users_feature;
 import java.util.List;
 
 import nyc.c4q.assessment.BaseContract;
+import nyc.c4q.assessment.pojo.NewUser;
 import nyc.c4q.assessment.pojo.User;
 
 /**
@@ -12,7 +13,7 @@ import nyc.c4q.assessment.pojo.User;
 public interface ListOfUserContract {
     interface Presenter extends BaseContract.BasePresenter<View> {
         void loadUsers();
-        void createNewUser();
+        void createNewUser(NewUser user);
     }
 
     interface View extends BaseContract.BaseView{
@@ -22,9 +23,11 @@ public interface ListOfUserContract {
 
         void showErrorDialog();
 
-        void currentlyFectchingData();
+        void currentlyFetchingData();
 
-        void doneFectingData();
+        void doneFetchingData();
+
+        void createdNewUserSuccessful();
     }
 }
 

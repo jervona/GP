@@ -16,16 +16,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApiModule {
-    private static final String BASE_URL="https://reqres.in/";
+    private static final String BASE_URL="https://reqres.in/api/";
 
-    @Provides
     @Singleton
+    @Provides
     OkHttpClient provideOkHttpClient(){
         return new OkHttpClient();
     }
 
-    @Provides
     @Singleton
+    @Provides
     Retrofit provideRetrofit(OkHttpClient client){
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -35,8 +35,8 @@ public class ApiModule {
                 .build();
     }
 
-    @Provides
     @Singleton
+    @Provides
     ApiService provideApiService (Retrofit retrofit){
         return retrofit.create(ApiService.class);
     }
