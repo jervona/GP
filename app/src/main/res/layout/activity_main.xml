@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nyc.c4q.assessment.MainActivity">
+    android:id="@+id/container"
+    tools:context="nyc.c4q.assessment.ui.MainActivity">
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -17,5 +19,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/loading_progresss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/create_new_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:elevation="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="@id/recycler_view"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_view" />
+
 
 </android.support.constraint.ConstraintLayout>
