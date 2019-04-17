@@ -6,7 +6,7 @@
     android:gravity="center"
     android:clickable="true"
     android:background="@color/white"
-    tools:context="nyc.c4q.assessment.ui.CreateUserFragment"
+    tools:context="nyc.c4q.assessment.create_new_user_feature.CreateUserFragment"
     android:focusable="true">
 
     <!-- TODO: Update blank fragment layout -->

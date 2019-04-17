@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    tools:context="nyc.c4q.assessment.ui.MainActivity">
+    tools:context="nyc.c4q.assessment.list_of_users_feature.MainActivity">
 
 
     <android.support.v7.widget.RecyclerView

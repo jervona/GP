@@ -1,4 +1,4 @@
-package nyc.c4q.assessment;
+package nyc.c4q.assessment.list_of_users_feature;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,27 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.schedulers.Schedulers;
 import nyc.c4q.assessment.api.ApiService;
-import nyc.c4q.assessment.list_of_users_feature.ListOfUserContract;
-import nyc.c4q.assessment.list_of_users_feature.ListOfUserPresenter;
 import nyc.c4q.assessment.pojo.ApiResponse;
-import nyc.c4q.assessment.pojo.NewUser;
-import nyc.c4q.assessment.pojo.SuccessfulNewUserResponse;
 import nyc.c4q.assessment.pojo.User;
 
-import static org.mockito.Mockito.doReturn;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
 /**
- * Created by jervon.arnoldd on 4/16/19.
+ * Created by jervon.arnoldd on 4/17/19.
  */
 public class ListOfUserPresenterTest {
-
     @Mock
     ListOfUserContract.View view;
 
@@ -45,7 +38,6 @@ public class ListOfUserPresenterTest {
         presenter.attach(view);
         RxAndroidPlugins.setMainThreadSchedulerHandler(scheduler -> Schedulers.trampoline());
     }
-
 
     @Test
     public void returnsListofUsers() throws Exception {
@@ -66,22 +58,7 @@ public class ListOfUserPresenterTest {
 
 
     @Test
-    public void successfullyCreatesNewUser() throws Exception {
-        NewUser user = new NewUser();
-        user.name = "Jervon";
-        user.job = "Driver";
-
-        SuccessfulNewUserResponse userResponse = new SuccessfulNewUserResponse();
-        userResponse.name = user.name;
-        userResponse.job = user.job;
-        userResponse.createdAt = "June 12 14pm";
-        userResponse.id = "000";
-
-        when(apiService.postNewUser(user.name, user.job)).thenReturn(Observable.just(userResponse));
-
-        presenter.createNewUser(user);
-
-        verify(view).createdNewUserSuccessful();
+    public void loadUsers() throws Exception {
     }
 
 }
