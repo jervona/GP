@@ -1,4 +1,4 @@
-package nyc.c4q.assessment.list_of_users_feature;
+package nyc.c4q.assessment.create_new_user_feature;
 
 import android.util.Log;
 
@@ -10,22 +10,22 @@ import nyc.c4q.assessment.api.ApiService;
 import nyc.c4q.assessment.pojo.NewUser;
 
 /**
- * Created by jervon.arnoldd on 4/15/19.
+ * Created by jervon.arnoldd on 4/16/19.
  */
 
-public class ListOfUserPresenter implements ListOfUserContract.Presenter {
+public class CreateNewUserPresenter implements CreateNewUserContract.Presenter {
     ApiService apiService;
-    ListOfUserContract.View view;
+    private CreateNewUserContract.View view;
     private CompositeDisposable disposable = new CompositeDisposable();
 
 
     @Inject
-    public ListOfUserPresenter(ApiService apiService) {
+    public CreateNewUserPresenter(ApiService apiService) {
         this.apiService = apiService;
     }
 
     @Override
-    public void attach(ListOfUserContract.View view) {
+    public void attach(CreateNewUserContract.View view) {
         this.view = view;
     }
 
@@ -36,18 +36,19 @@ public class ListOfUserPresenter implements ListOfUserContract.Presenter {
     }
 
     @Override
-    public void loadUsers() {
-        view.currentlyFetchingData();
+    public void createNewUser(NewUser user) {
         disposable.add(
-                apiService.getListOfUser()
+                apiService.postNewUser(user.name, user.job)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(apiResponse -> {
-                            view.doneFetchingData();
-                            view.showResults(apiResponse.data);
+                        .subscribe(newUserResponse -> {
+                            Log.e("Running in rx","rx");
+                            view.createdNewUserSuccessful();
                         }, throwable -> {
-                            view.showErrorDialog();
-//                            Log.e("RxError", throwable.toString());
+                            view.showToast("Error Try Again");
+                            Log.e("RxError Post", throwable.toString());
                         })
         );
+
+
     }
 }

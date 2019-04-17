@@ -13,21 +13,14 @@ import nyc.c4q.assessment.pojo.User;
 public interface ListOfUserContract {
     interface Presenter extends BaseContract.BasePresenter<View> {
         void loadUsers();
-        void createNewUser(NewUser user);
     }
 
     interface View extends BaseContract.BaseView{
         void showResults(List<User> userList);
-
         void showToast(String s);
-
         void showErrorDialog();
-
         void currentlyFetchingData();
-
         void doneFetchingData();
-
-        void createdNewUserSuccessful();
     }
 }
 
